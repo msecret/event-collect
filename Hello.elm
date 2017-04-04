@@ -1,19 +1,21 @@
 module Hello exposing (..)
 
-import Html exposing (Html, div, program)
+import Html exposing (Html, text, div, button, program)
+import Html.Events exposing (onClick)
 
 
 type alias Model =
-    String
+    Bool
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( "Hello poop", Cmd.none )
+    ( False, Cmd.none )
 
 
 type Msg
-    = NoOp
+    = Expand
+    | Collapse
 
 
 
@@ -22,8 +24,14 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ Html.text model ]
+    if model then
+        div []
+            [ button [ onClick Collapse ] [ text "Collapse" ]
+            , text "Widget"
+            ]
+    else
+        div []
+            [ button [ onClick Expand ] [ text "Expand " ] ]
 
 
 
@@ -33,8 +41,11 @@ view model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp ->
-            ( model, Cmd.none )
+        Expand ->
+            ( True, Cmd.none )
+
+        Collapse ->
+            ( False, Cmd.none )
 
 
 
