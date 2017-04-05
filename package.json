@@ -1,13 +1,17 @@
 {
   "scripts": {
     "build": "webpack",
-    "client": "webpack-dev-server --port 8000",
+    "server-api": "node server/api.js",
+    "server-client": "webpack-dev-server --port 8000",
+    "start": "nf start",
     "watch": "webpack --watch"
   },
   "dependencies": {
     "css-loader": "^0.28.0",
     "elm-webpack-loader": "^4.3.0",
     "file-loader": "^0.11.1",
+    "foreman": "^2.0.0",
+    "json-server": "0.9.5",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
